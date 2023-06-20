@@ -19,6 +19,21 @@ func TestNew(t *testing.T) {
 	}
 }
 
+// Exemplifica o uso de New.
+func ExampleNew() {
+	lol, err := New("default")
+	if err != nil {
+		log.Panicln(err)
+	}
+
+	fmt.Printf("Instância: %T\n", lol)
+	fmt.Printf("Champions: %T", lol.Champions)
+
+	// Output:
+	// Instância: league.League
+	// Champions: []league.Champion
+}
+
 // Exemplifica o uso de GetChampions.
 func ExampleGetChampions() {
 	champions, err := GetChampions("default")

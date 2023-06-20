@@ -52,8 +52,6 @@ func ExampleGetChampions() {
 
 // Exemplifica o uso de League.Export.
 func ExampleLeague_Export() {
-	resultFilename := "result.json"
-
 	// Instanciando League.
 	lol, err := New("default")
 	if err != nil {
@@ -61,24 +59,36 @@ func ExampleLeague_Export() {
 	}
 
 	// Traduzindo os dados para JSON.
-	championsJSON, err := lol.Export(4)
+	leagueData, err := lol.Export(4)
 	if err != nil {
 		log.Panicln(err)
 	}
 
-	// Salvando o JSON para um arquivo local.
-	if os.WriteFile(resultFilename, championsJSON, 0644) != nil {
-		log.Fatal("Não foi possível salvar os dados no arquivo")
-	}
+	// Exibindo o tipo da variável leagueData
+	fmt.Printf("LeagueData: %T", leagueData)
 
-	// Verificando se o arquivo existe.
-	fileInfo, err := os.Stat(resultFilename)
+	// Output: LeagueData: []uint8
+}
+
+// Como salvar os dados de League.
+func ExampleLeague_Save() {
+	lol, err := New("default")
 	if err != nil {
 		log.Panicln(err)
 	}
 
-	resultFilename = fileInfo.Name()
-	fmt.Println(resultFilename)
+	err = lol.Save("result.json", 4)
+	if err != nil {
+		log.Panicln(err)
+	}
+
+	fileInfo, err := os.Stat("result.json")
+	if err != nil {
+		log.Panicln(err)
+	}
+
+	exportedFilename := fileInfo.Name()
+	fmt.Println(exportedFilename)
 
 	// Output: result.json
 }

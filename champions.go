@@ -67,16 +67,15 @@ const (
 func getUnits(region string) (units map[string]Unit, err error) {
 	// Existem outros endpoints que podem fazer o mesmíssimo trabalho desta.
 	endpoint := fmt.Sprintf("/latest/plugins/rcp-be-lol-game-data/global/%s/v1/skins.json", region)
+
 	response, err := http.Get(baseURL + endpoint)
 	if err != nil || response.StatusCode != http.StatusOK {
-		err := fmt.Errorf("requisitar os campeões: %v", err)
-		return nil, err
+		return nil, fmt.Errorf("requisitar os campeões: %v", err)
 	}
 	defer response.Body.Close()
 
 	if err := json.NewDecoder(response.Body).Decode(&units); err != nil {
-		err := fmt.Errorf("estruturação do JSON: %v", err)
-		return nil, err
+		return nil, fmt.Errorf("estruturação do JSON: %v", err)
 	}
 	return units, nil
 }
@@ -103,6 +102,7 @@ func GetChampions(region string) (champions []Champion, err error) {
 			Rarity:      unit.Rarity,
 			IsLegacy:    unit.IsLegacy,
 			Chromas:     unit.Chromas,
+			Skins:       nil,
 		}
 		champions = append(champions, champion)
 	}

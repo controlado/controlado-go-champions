@@ -12,11 +12,11 @@ func ExampleGetChampions() {
 		panic(err)
 	}
 
-	for index, champion := range champions {
+	for _, champion := range champions {
 		if champion.Name == "K'Sante" {
-			fmt.Println(index, champion.ID)
+			fmt.Println(champion.Rarity)
 		}
 	}
 
-	// Output: 65 897
+	// Output: kNoRarity
 }

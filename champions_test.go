@@ -23,8 +23,7 @@ func TestNew(t *testing.T) {
 func ExampleGetChampions() {
 	champions, err := GetChampions("default")
 	if err != nil {
-		log.Println("Não foi possível requisitar os campeões")
-		panic(err)
+		log.Panicln("Não foi possível requisitar os campeões")
 	}
 
 	for _, champion := range champions {

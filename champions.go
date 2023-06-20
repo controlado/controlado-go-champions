@@ -100,14 +100,14 @@ func GetChampions(region string) (champions []Champion, err error) {
 		championIdString := strings.Split(unit.SplashPath, "/")[5]
 		championId, _ := strconv.Atoi(championIdString)
 		champion := Champion{
-			ID:          championId,
-			Name:        unit.Name,
-			NameURL:     championNameUrl,
-			Description: unit.Description,
-			Rarity:      unit.Rarity,
-			IsLegacy:    unit.IsLegacy,
-			Chromas:     unit.Chromas,
-			Skins:       nil,
+			championId,
+			unit.Name,
+			championNameUrl,
+			unit.Description,
+			unit.Rarity,
+			unit.IsLegacy,
+			unit.Chromas,
+			nil,
 		}
 		champions = append(champions, champion)
 	}
@@ -119,13 +119,13 @@ func GetChampions(region string) (champions []Champion, err error) {
 		championIdString := strings.Split(unit.SplashPath, "/")[5]
 		championId, _ := strconv.Atoi(championIdString)
 		skin := Skin{
-			ID:          unit.ID,
-			ChampionId:  championId,
-			Name:        unit.Name,
-			Description: unit.Description,
-			Rarity:      unit.Rarity,
-			IsLegacy:    unit.IsLegacy,
-			Chromas:     unit.Chromas,
+			unit.ID,
+			championId,
+			unit.Name,
+			unit.Description,
+			unit.Rarity,
+			unit.IsLegacy,
+			unit.Chromas,
 		}
 		for index := range champions {
 			champion := &champions[index]

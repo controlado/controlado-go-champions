@@ -31,15 +31,15 @@ import (
 func main() {
 	lol, err := league.New("default")
 	if err != nil {
-		log.Panicln("Não foi possível instanciar League:", err)
+		panic(err)
 	}
-
-	for _, champion := range lol.Champions{
+    
+	for index, champion := range lol.Champions{
 		if champion.ID == 4 {
-			fmt.Println(champion.Name)
+			fmt.Println(index, champion.Name)
 		}
 	}
 }
 ```
 
-    Output: Twisted Fate
+    Output: int Twisted Fate

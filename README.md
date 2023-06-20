@@ -29,13 +29,12 @@ import (
 )
 
 func main() {
-	champions, err := league.GetChampions("default")
+	lol, err := league.New("default")
 	if err != nil {
-		log.Println("Não foi possível requisitar os campeões")
-		panic(err)
+		log.Panicln("Não foi possível instanciar League:", err)
 	}
 
-	for _, champion := range champions {
+	for _, champion := range lol.Champions{
 		if champion.ID == 4 {
 			fmt.Println(champion.Name)
 		}

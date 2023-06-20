@@ -151,25 +151,25 @@ func GetChampions(region string) (champions []Champion, err error) {
 }
 
 // New instancia a estrutura central do pacote.
-func New(region string) (league League, err error) {
-	league.Champions, err = GetChampions(region)
+func New(region string) (lol League, err error) {
+	lol.Champions, err = GetChampions(region)
 	if err != nil {
-		return league, err
+		return lol, err
 	}
-	return league, nil
+	return lol, nil
 }
 
 // Export faz um parse dos dados gerados para JSON.
-func (league League) Export(indent int) ([]byte, error) {
+func (lol League) Export(indent int) ([]byte, error) {
 	indentString := strings.Repeat(" ", indent) // Indentação do arquivo.
-	return json.MarshalIndent(league.Champions, "", indentString)
+	return json.MarshalIndent(lol.Champions, "", indentString)
 }
 
 // GetChampionsNames retorna uma lista apenas com os nomes dos campeões.
 //
 // Útil para usuários que querem passar os nomes em um checker.
-func (league League) GetChampionsNames() (result []string) {
-	for _, champion := range league.Champions {
+func (lol League) GetChampionsNames() (result []string) {
+	for _, champion := range lol.Champions {
 		result = append(result, champion.NameURL)
 	}
 	return result

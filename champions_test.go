@@ -40,13 +40,13 @@ func ExampleLeague_Export() {
 	resultFilename := "result.json"
 
 	// Instanciando League.
-	league, err := New("default")
+	lol, err := New("default")
 	if err != nil {
 		log.Panicln(err)
 	}
 
 	// Traduzindo os dados para JSON.
-	championsJSON, err := league.Export(4)
+	championsJSON, err := lol.Export(4)
 	if err != nil {
 		log.Panicln(err)
 	}
@@ -70,12 +70,12 @@ func ExampleLeague_Export() {
 
 // Exemplifica o uso de League.GetChampionsNames.
 func ExampleLeague_GetChampionsNames() {
-	league, err := New("default")
+	lol, err := New("default")
 	if err != nil {
 		log.Panicln(err)
 	}
 
-	championsNames := league.GetChampionsNames()
+	championsNames := lol.GetChampionsNames()
 	namesLength := len(championsNames)
 	fmt.Println(namesLength)
 

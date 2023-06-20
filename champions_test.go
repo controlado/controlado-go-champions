@@ -63,7 +63,7 @@ func ExampleGetChampions() {
 
 // Exemplifica o uso de ChampionsToJSON.
 func ExampleChampionsToJSON() {
-	filename := "champions.json"
+	filename := "result.json"
 	champions, _ := GetChampions("default")
 	championsJSON, _ := ChampionsToJSON(champions, 4)
 
@@ -76,7 +76,7 @@ func ExampleChampionsToJSON() {
 	filename = fileInfo.Name()
 	fmt.Println(filename)
 
-	// Output: champions.json
+	// Output: result.json
 }
 
 // Conta quantos campeões e skins existem nas unidades.

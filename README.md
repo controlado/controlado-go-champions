@@ -1,6 +1,6 @@
 <div align=center> 
 
-![Coverage](https://img.shields.io/badge/Coverage-96.4%25-brightgreen)
+![Coverage](https://img.shields.io/badge/Coverage-96.4%25-blue-text=Tested)
 
 This is my first project in Go! <br>
 I hope it can be useful for you :)

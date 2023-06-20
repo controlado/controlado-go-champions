@@ -60,9 +60,7 @@ type Chroma struct {
 	Colors []string // Cores do Chroma.
 }
 
-const (
-	baseURL = "https://raw.communitydragon.org" // Dados crus da Riot.
-)
+const baseURL = "https://raw.communitydragon.org" // Dados crus da Riot.
 
 func getUnits(region string) (units map[string]Unit, err error) {
 	// Existem outros endpoints que podem fazer o mesmíssimo trabalho desta.

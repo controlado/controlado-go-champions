@@ -52,12 +52,12 @@ func ExampleGetChampions() {
 	}
 
 	for _, champion := range champions {
-		if champion.Name == "K'Sante" {
-			fmt.Println(champion.Rarity)
+		if champion.ID == "4" {
+			fmt.Println(champion.Name)
 		}
 	}
 
-	// Output: kNoRarity
+	// Output: Twisted Fate
 }
 
 // Conta quantos campeões e skins existem nas unidades.

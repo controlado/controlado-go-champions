@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
 	"strings"
 )
 
@@ -29,7 +30,7 @@ type Unit struct {
 //
 // Nem todos os campeões possuem Chromas.
 type Champion struct {
-	ID          string
+	ID          int
 	Name        string   // Nome do campeão.
 	NameURL     string   // Nome de URL do campeão.
 	Description string   // Descrição do campeão.
@@ -46,7 +47,7 @@ type Champion struct {
 // Nem todas as skins possuem Chromas.
 type Skin struct {
 	ID          int
-	ChampionId  string   // ID do campeão.
+	ChampionId  int      // ID do campeão.
 	Name        string   // Nome da skin.
 	Description string   // Descrição da skin.
 	Rarity      string   // Por exemplo: kMythic.
@@ -95,8 +96,9 @@ func GetChampions(region string) (champions []Champion, err error) {
 		if !unit.IsBase {
 			continue
 		}
-		championId := strings.Split(unit.SplashPath, "/")[5]
 		championNameUrl := strings.Split(unit.LoadScreenPath, "/")[5]
+		championIdString := strings.Split(unit.SplashPath, "/")[5]
+		championId, _ := strconv.Atoi(championIdString)
 		champion := Champion{
 			ID:          championId,
 			Name:        unit.Name,
@@ -114,7 +116,8 @@ func GetChampions(region string) (champions []Champion, err error) {
 		if unit.IsBase {
 			continue
 		}
-		championId := strings.Split(unit.SplashPath, "/")[5]
+		championIdString := strings.Split(unit.SplashPath, "/")[5]
+		championId, _ := strconv.Atoi(championIdString)
 		skin := Skin{
 			ID:          unit.ID,
 			ChampionId:  championId,

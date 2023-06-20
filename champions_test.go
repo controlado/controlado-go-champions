@@ -52,7 +52,7 @@ func ExampleGetChampions() {
 	}
 
 	for _, champion := range champions {
-		if champion.ID == "4" {
+		if champion.ID == 4 {
 			fmt.Println(champion.Name)
 		}
 	}

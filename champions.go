@@ -75,7 +75,7 @@ func getUnits(region string) (units map[string]Unit, err error) {
 	defer response.Body.Close()
 
 	if err := json.NewDecoder(response.Body).Decode(&units); err != nil {
-		err := fmt.Errorf("conversão do JSON para as estruturas: %v", err)
+		err := fmt.Errorf("estruturação do JSON: %v", err)
 		return nil, err
 	}
 	return units, nil

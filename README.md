@@ -23,7 +23,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 
 	"github.com/controlado/league-champions-go"
 )
@@ -33,13 +32,15 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-    
-	for index, champion := range lol.Champions{
-		if champion.ID == 4 {
+
+	for index, champion := range lol.Champions {
+		if champion.ID == 4 || champion.ID == 20 {
 			fmt.Println(index, champion.Name)
 		}
 	}
 }
 ```
 
-    Output: int Twisted Fate
+    Output:
+    int Twisted Fate
+    int Nunu & Willump

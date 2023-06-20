@@ -87,9 +87,7 @@ func getUnits(region string) (units map[string]Unit, err error) {
 //
 // O usuário pode escolher o idioma da resposta, escolhendo entre as regiões
 // conhecidas, como "default" (inglês) ou "pt_br" (português brasileiro).
-func GetChampions(region string) ([]Champion, error) {
-	var champions []Champion
-
+func GetChampions(region string) (champions []Champion, err error) {
 	units, err := getUnits(region)
 	if err != nil {
 		return nil, err

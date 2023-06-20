@@ -11,6 +11,15 @@ import (
 	"strings"
 )
 
+// League é a estrutura central do pacote.
+//
+// Possui todos os campeões, skins e cromas,
+// além de fornecer métodos que auxiliam na
+// manipulação dos dados gerados.
+type League struct {
+	Champions []Champion
+}
+
 // Unit é uma estrutura que representa uma skin
 // ou um campeão do League of Legends.
 type Unit struct {
@@ -85,6 +94,8 @@ func getUnits(region string) (units map[string]Unit, err error) {
 
 // GetChampions retorna uma lista de campeões com suas skins e chromas.
 //
+// É recomendado que New seja utilizado para acessar métodos de manipulação.
+//
 // O usuário pode escolher o idioma da resposta, escolhendo entre as regiões
 // conhecidas, como "default" (inglês) ou "pt_br" (português brasileiro).
 func GetChampions(region string) (champions []Champion, err error) {
@@ -139,8 +150,27 @@ func GetChampions(region string) (champions []Champion, err error) {
 	return champions, nil
 }
 
-// ChampionsToJSON faz um parse dos champions para JSON.
-func ChampionsToJSON(champions []Champion, indent int) ([]byte, error) {
+// New instancia a estrutura central do pacote.
+func New(region string) (league League, err error) {
+	league.Champions, err = GetChampions(region)
+	if err != nil {
+		return league, err
+	}
+	return league, nil
+}
+
+// Export faz um parse dos dados gerados para JSON.
+func (league League) Export(indent int) ([]byte, error) {
 	indentString := strings.Repeat(" ", indent) // Indentação do arquivo.
-	return json.MarshalIndent(champions, "", indentString)
+	return json.MarshalIndent(league.Champions, "", indentString)
+}
+
+// GetChampionsNames retorna uma lista apenas com os nomes dos campeões.
+//
+// Útil para usuários que querem passar os nomes em um checker.
+func (league League) GetChampionsNames() (result []string) {
+	for _, champion := range league.Champions {
+		result = append(result, champion.NameURL)
+	}
+	return result
 }

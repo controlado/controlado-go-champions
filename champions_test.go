@@ -7,40 +7,15 @@ import (
 	"testing"
 )
 
-// Representa a contagem de unidades.
-type UnitCounter struct {
-	Champions int
-	Skins     int
-}
-
-// Esse teste verifica se a quantidade de
-// campeões na requisição crua é a mesma
-// da requisição final: GetChampions.
-func TestGetChampions(t *testing.T) {
-	champions, err := GetChampions("default")
-	if err != nil {
-		t.Error("Não foi possível requisitar os campeões")
+// Testa as funcionalidades principais
+// que regem a instância de League.
+func TestNew(t *testing.T) {
+	if _, err := New("default"); err != nil {
+		t.Errorf("Not working: %v", err)
 	}
 
-	units, err := getUnits("default")
-	if err != nil {
-		t.Error("Não foi possível requisitar as unidades")
-	}
-
-	var expectedLength = len(champions)
-	var unitsLength = countUnits(units)
-
-	if expectedLength != unitsLength.Champions {
-		t.Error("Expected:", unitsLength, "Got:", expectedLength)
-	}
-}
-
-// Esse teste verifica a resposta para o usuário
-// caso a região argumentada seja inválida.
-func TestGetChampionsInvalidRegion(t *testing.T) {
-	_, err := GetChampions("something_invalid")
-	if err == nil {
-		t.Error(err)
+	if _, err := New("invalid"); err == nil {
+		t.Error("Expected: error Got: nil")
 	}
 }
 
@@ -61,33 +36,49 @@ func ExampleGetChampions() {
 	// Output: Twisted Fate
 }
 
-// Exemplifica o uso de ChampionsToJSON.
-func ExampleChampionsToJSON() {
-	filename := "result.json"
-	champions, _ := GetChampions("default")
-	championsJSON, _ := ChampionsToJSON(champions, 4)
+// Exemplifica o uso de League.Export.
+func ExampleLeague_Export() {
+	resultFilename := "result.json"
 
-	// Salvando o JSON para um arquivo local.
-	if os.WriteFile(filename, championsJSON, 0644) != nil {
-		log.Fatal("Não foi possível salvar o arquivo")
+	// Instanciando League.
+	league, err := New("default")
+	if err != nil {
+		log.Panicln(err)
 	}
 
-	fileInfo, _ := os.Stat(filename)
-	filename = fileInfo.Name()
-	fmt.Println(filename)
+	// Traduzindo os dados para JSON.
+	championsJSON, err := league.Export(4)
+	if err != nil {
+		log.Panicln(err)
+	}
+
+	// Salvando o JSON para um arquivo local.
+	if os.WriteFile(resultFilename, championsJSON, 0644) != nil {
+		log.Fatal("Não foi possível salvar os dados no arquivo")
+	}
+
+	// Verificando se o arquivo existe.
+	fileInfo, err := os.Stat(resultFilename)
+	if err != nil {
+		log.Panicln(err)
+	}
+
+	resultFilename = fileInfo.Name()
+	fmt.Println(resultFilename)
 
 	// Output: result.json
 }
 
-// Conta quantos campeões e skins existem nas unidades.
-func countUnits(units map[string]Unit) (counter UnitCounter) {
-	for _, unit := range units {
-		if unit.IsBase {
-			counter.Champions++
-		} else {
-			counter.Skins++
-		}
+// Exemplifica o uso de League.GetChampionsNames.
+func ExampleLeague_GetChampionsNames() {
+	league, err := New("default")
+	if err != nil {
+		log.Panicln(err)
 	}
 
-	return counter
+	championsNames := league.GetChampionsNames()
+	namesLength := len(championsNames)
+	fmt.Println(namesLength)
+
+	// Output: 163
 }

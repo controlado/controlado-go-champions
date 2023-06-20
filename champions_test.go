@@ -1,4 +1,4 @@
-package champions
+package league
 
 import (
 	"fmt"

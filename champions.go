@@ -1,7 +1,7 @@
-// Package champions é um pacote que te
+// Package league é um pacote que te
 // manipular os dados de todos os campeões,
 // skins e chromas do League of Legends.
-package champions
+package league
 
 import (
 	"encoding/json"

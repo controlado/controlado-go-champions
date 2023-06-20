@@ -13,14 +13,15 @@ import (
 // Unit é uma estrutura que representa uma skin
 // ou um campeão do League of Legends.
 type Unit struct {
-	IsBase      bool // Se a Unit é um campeão (ou skin).
-	IsLegacy    bool
-	ID          int
-	Name        string
-	Description string
-	Rarity      string
-	SplashPath  string
-	Chromas     []Chroma
+	IsBase         bool // Se a Unit é um campeão (ou skin).
+	IsLegacy       bool
+	ID             int
+	Name           string
+	Description    string
+	Rarity         string
+	SplashPath     string
+	LoadScreenPath string
+	Chromas        []Chroma
 }
 
 // Champion é uma estrutura que representa os
@@ -30,6 +31,7 @@ type Unit struct {
 type Champion struct {
 	ID          string
 	Name        string   // Nome do campeão.
+	NameURL     string   // Nome de URL do campeão.
 	Description string   // Descrição do campeão.
 	Rarity      string   // Por exemplo: kMythic.
 	IsLegacy    bool     // Se é um campeão legado.
@@ -94,9 +96,11 @@ func GetChampions(region string) (champions []Champion, err error) {
 			continue
 		}
 		championId := strings.Split(unit.SplashPath, "/")[5]
+		championNameUrl := strings.Split(unit.LoadScreenPath, "/")[5]
 		champion := Champion{
 			ID:          championId,
 			Name:        unit.Name,
+			NameURL:     championNameUrl,
 			Description: unit.Description,
 			Rarity:      unit.Rarity,
 			IsLegacy:    unit.IsLegacy,

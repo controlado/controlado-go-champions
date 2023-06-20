@@ -3,6 +3,7 @@ package league
 import (
 	"fmt"
 	"log"
+	"os"
 	"testing"
 )
 
@@ -58,6 +59,24 @@ func ExampleGetChampions() {
 	}
 
 	// Output: Twisted Fate
+}
+
+// Exemplifica o uso de ChampionsToJSON.
+func ExampleChampionsToJSON() {
+	filename := "champions.json"
+	champions, _ := GetChampions("default")
+	championsJSON, _ := ChampionsToJSON(champions, 4)
+
+	// Salvando o JSON para um arquivo local.
+	if os.WriteFile(filename, championsJSON, 0644) != nil {
+		log.Fatal("Não foi possível salvar o arquivo")
+	}
+
+	fileInfo, _ := os.Stat(filename)
+	filename = fileInfo.Name()
+	fmt.Println(filename)
+
+	// Output: champions.json
 }
 
 // Conta quantos campeões e skins existem nas unidades.

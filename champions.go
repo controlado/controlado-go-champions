@@ -138,3 +138,9 @@ func GetChampions(region string) (champions []Champion, err error) {
 
 	return champions, nil
 }
+
+// ChampionsToJSON faz um parse dos champions para JSON.
+func ChampionsToJSON(champions []Champion, indent int) ([]byte, error) {
+	indentString := strings.Repeat(" ", indent) // Indentação do arquivo.
+	return json.MarshalIndent(champions, "", indentString)
+}

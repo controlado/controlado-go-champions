@@ -1,15 +1,15 @@
 mode: set
-github.com/controlado/league-champions-go/champions.go:67.65,71.56 3 1
-github.com/controlado/league-champions-go/champions.go:71.56,74.3 2 1
+github.com/controlado/league-champions-go/champions.go:67.65,72.56 3 1
+github.com/controlado/league-champions-go/champions.go:72.56,74.3 1 1
 github.com/controlado/league-champions-go/champions.go:75.2,77.70 2 1
-github.com/controlado/league-champions-go/champions.go:77.70,80.3 2 0
-github.com/controlado/league-champions-go/champions.go:81.2,81.19 1 1
-github.com/controlado/league-champions-go/champions.go:88.68,90.16 2 1
-github.com/controlado/league-champions-go/champions.go:90.16,92.3 1 1
-github.com/controlado/league-champions-go/champions.go:94.2,94.29 1 1
-github.com/controlado/league-champions-go/champions.go:94.29,95.19 1 1
-github.com/controlado/league-champions-go/champions.go:95.19,96.12 1 1
-github.com/controlado/league-champions-go/champions.go:98.3,107.42 3 1
+github.com/controlado/league-champions-go/champions.go:77.70,79.3 1 0
+github.com/controlado/league-champions-go/champions.go:80.2,80.19 1 1
+github.com/controlado/league-champions-go/champions.go:87.68,89.16 2 1
+github.com/controlado/league-champions-go/champions.go:89.16,91.3 1 1
+github.com/controlado/league-champions-go/champions.go:93.2,93.29 1 1
+github.com/controlado/league-champions-go/champions.go:93.29,94.19 1 1
+github.com/controlado/league-champions-go/champions.go:94.19,95.12 1 1
+github.com/controlado/league-champions-go/champions.go:97.3,107.42 3 1
 github.com/controlado/league-champions-go/champions.go:110.2,110.29 1 1
 github.com/controlado/league-champions-go/champions.go:110.29,111.18 1 1
 github.com/controlado/league-champions-go/champions.go:111.18,112.12 1 1

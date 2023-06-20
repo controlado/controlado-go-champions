@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -163,6 +164,16 @@ func New(region string) (lol League, err error) {
 func (lol League) Export(indent int) ([]byte, error) {
 	indentString := strings.Repeat(" ", indent) // Indentação do arquivo.
 	return json.MarshalIndent(lol.Champions, "", indentString)
+}
+
+// Save faz parse com Export e salva os dados em um arquivo.
+func (lol League) Save(filename string, indent int) error {
+	leagueData, err := lol.Export(indent)
+	if err != nil {
+		return err
+	}
+	// os.WriteFile tem o mesmo retorno de Save.
+	return os.WriteFile(filename, leagueData, 0644)
 }
 
 // GetChampionsNames retorna uma lista apenas com os nomes dos campeões.

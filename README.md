@@ -1,4 +1,5 @@
 <div align=center> 
+![coverage](https://img.shields.io/badge/coverage-96.4%25-brightgreen)
 
 # `🔎` League Champions <br>
 

@@ -65,6 +65,7 @@ type Chroma struct {
 
 const baseURL = "https://raw.communitydragon.org" // Dados crus da Riot.
 
+// Retorna as unidades (campeões e skins) de forma crua.
 func getUnits(region string) (units map[string]Unit, err error) {
 	// Existem outros endpoints que podem fazer o mesmíssimo trabalho desta.
 	endpoint := fmt.Sprintf("/latest/plugins/rcp-be-lol-game-data/global/%s/v1/skins.json", region)

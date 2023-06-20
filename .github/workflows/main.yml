@@ -40,7 +40,6 @@ jobs:
         uses: tj-actions/coverage-badge-go@v2
         with:
           filename: coverage.out
-          text: Tested
           color: blue
 
       - name: Verify Changed files

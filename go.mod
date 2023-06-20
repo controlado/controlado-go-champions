@@ -1,4 +1,4 @@
-module github.com/controlado/go-champions.git
+module github.com/controlado/league-champions-go
 
 go 1.20
 

@@ -17,18 +17,17 @@ const baseURL = "https://raw.communitydragon.org" // Dados crus da Riot.
 
 // Retorna as unidades (campeões e skins) de forma crua.
 func getUnits(region string) (units map[string]Unit, err error) {
-	// Existem outros endpoints que podem fazer o mesmíssimo trabalho desta.
 	endpoint := fmt.Sprintf("/latest/plugins/rcp-be-lol-game-data/global/%s/v1/skins.json", region)
-
 	response, err := http.Get(baseURL + endpoint)
 	if err != nil || response.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("requisitar os campeões: %v", err)
+		return nil, fmt.Errorf("requesting champions: %v", err)
 	}
 	defer response.Body.Close()
 
 	decoder := json.NewDecoder(response.Body)
-	if err := decoder.Decode(&units); err != nil {
-		return nil, fmt.Errorf("estruturação do JSON: %v", err)
+	err = decoder.Decode(&units)
+	if err != nil {
+		return nil, fmt.Errorf("json decoding: %v", err)
 	}
 	return units, nil
 }

@@ -28,12 +28,12 @@ type Unit struct {
 //
 // Nem todos os campeões possuem Chromas.
 type Champion struct {
-	ID          int      `json:"id,omitempty"`
+	ID          int      `json:"ID,omitempty"`
 	Name        string   `json:"name,omitempty"`        // Nome do campeão.
 	NameURL     string   `json:"nameUrl,omitempty"`     // Nome de URL do campeão.
 	Description string   `json:"description,omitempty"` // Descrição do campeão.
 	Rarity      string   `json:"rarity,omitempty"`      // Por exemplo: kMythic.
-	IsLegacy    bool     `json:"isLegacy,omitempty"`    // Se é um campeão legado.
+	IsLegacy    bool     `json:"isLegacy"`              // Se é um campeão legado.
 	Chromas     []Chroma `json:"chromas,omitempty"`     // Chromas do campeão.
 	Skins       []Skin   `json:"skins,omitempty"`       // Skins do campeão.
 }
@@ -44,19 +44,19 @@ type Champion struct {
 // Todos os campeões possuem uma skin.
 // Nem todas as skins possuem Chromas.
 type Skin struct {
-	ID          int      `json:"id,omitempty"`
+	ID          int      `json:"ID,omitempty"`
 	ChampionId  int      `json:"championId,omitempty"`  // ID do campeão.
 	Name        string   `json:"name,omitempty"`        // Nome da skin.
 	Description string   `json:"description,omitempty"` // Descrição da skin.
 	Rarity      string   `json:"rarity,omitempty"`      // Por exemplo: kMythic.
-	IsLegacy    bool     `json:"isLegacy,omitempty"`    // Se é uma skin legado.
+	IsLegacy    bool     `json:"isLegacy"`              // Se é uma skin legado.
 	Chromas     []Chroma `json:"chromas,omitempty"`     // Chromas da skin, opcional.
 }
 
 // Chroma é uma skin personalizada que
 // pode existir em campeões e skins.
 type Chroma struct {
-	ID     int      `json:"id,omitempty"`     // ID do Chroma.
+	ID     int      `json:"ID,omitempty"`     // ID do Chroma.
 	Name   string   `json:"name,omitempty"`   // Nome do Chroma.
 	Colors []string `json:"colors,omitempty"` // Cores do Chroma.
 }

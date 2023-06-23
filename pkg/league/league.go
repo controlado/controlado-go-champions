@@ -5,33 +5,13 @@ package league
 
 import (
 	"encoding/json"
-	"fmt"
-	"net/http"
 	"os"
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/controlado/league-champions-go/internal/requests"
 )
-
-const baseURL = "https://raw.communitydragon.org" // Dados crus da Riot.
-
-// Retorna as unidades (campeões e skins) de forma crua.
-func getUnits(region string) (units map[string]Unit, err error) {
-	// Existem outros endpoints que podem fazer o mesmíssimo trabalho desta.
-	endpoint := fmt.Sprintf("/latest/plugins/rcp-be-lol-game-data/global/%s/v1/skins.json", region)
-
-	response, err := http.Get(baseURL + endpoint)
-	if err != nil || response.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("requisitar os campeões: %v", err)
-	}
-	defer response.Body.Close()
-
-	decoder := json.NewDecoder(response.Body)
-	if err := decoder.Decode(&units); err != nil {
-		return nil, fmt.Errorf("estruturação do JSON: %v", err)
-	}
-	return units, nil
-}
 
 // GetChampions retorna uma lista de campeões com suas skins e chromas.
 //
@@ -40,7 +20,7 @@ func getUnits(region string) (units map[string]Unit, err error) {
 // O usuário pode escolher o idioma da resposta, escolhendo entre as regiões
 // conhecidas, como "default" (inglês) ou "pt_br" (português brasileiro).
 func GetChampions(region string) (champions []Champion, err error) {
-	units, err := getUnits(region)
+	units, err := requests.GetUnits(region)
 	if err != nil {
 		return nil, err
 	}
@@ -102,6 +82,16 @@ func New(region string) (lol League, err error) {
 	return lol, nil
 }
 
+// GetChampionsNames retorna uma lista apenas com os nomes dos campeões.
+//
+// Útil para usuários que querem passar os nomes em um checker.
+func (lol League) GetChampionsNames() (result []string) {
+	for _, champion := range lol.Champions {
+		result = append(result, champion.NameURL)
+	}
+	return result
+}
+
 // Export faz um parse dos dados gerados para JSON.
 func (lol League) Export(indent int) ([]byte, error) {
 	indentString := strings.Repeat(" ", indent) // Indentação do arquivo.
@@ -116,16 +106,6 @@ func (lol League) Save(filename string, indent int) error {
 	}
 	// os.WriteFile tem o mesmo retorno de Save.
 	return os.WriteFile(filename, leagueData, 0644)
-}
-
-// GetChampionsNames retorna uma lista apenas com os nomes dos campeões.
-//
-// Útil para usuários que querem passar os nomes em um checker.
-func (lol League) GetChampionsNames() (result []string) {
-	for _, champion := range lol.Champions {
-		result = append(result, champion.NameURL)
-	}
-	return result
 }
 
 // Ordena os campeões com base no ID.

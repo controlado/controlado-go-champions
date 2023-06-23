@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -19,6 +20,20 @@ import (
 // manipulação dos dados gerados.
 type League struct {
 	Champions []Champion
+}
+
+// Ordena os campeões em ordem alfabética.
+func (lol League) sortChampions() {
+	less := func(i, j int) bool { return lol.Champions[i].Name < lol.Champions[j].Name }
+	sort.SliceStable(lol.Champions, less)
+}
+
+// Ordena os skins em ordem alfabética.
+func (lol League) sortSkins() {
+	for _, champion := range lol.Champions {
+		less := func(i, j int) bool { return champion.Skins[i].Name < champion.Skins[j].Name }
+		sort.SliceStable(champion.Skins, less)
+	}
 }
 
 // Unit é uma estrutura que representa uma skin
@@ -157,6 +172,8 @@ func New(region string) (lol League, err error) {
 	if err != nil {
 		return lol, err
 	}
+	lol.sortChampions()
+	lol.sortSkins()
 	return lol, nil
 }
 

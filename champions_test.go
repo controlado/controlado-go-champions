@@ -26,12 +26,28 @@ func ExampleNew() {
 		log.Panicln(err)
 	}
 
-	fmt.Printf("Instância: %T\n", lol)
-	fmt.Printf("Champions: %T", lol.Champions)
+	for index, champion := range lol.Champions {
+		if champion.Name == "Nunu & Willump" {
+			fmt.Println(index, champion.NameURL)
+
+			for index, skin := range champion.Skins {
+				fmt.Println(index, skin.Name)
+			}
+		}
+	}
 
 	// Output:
-	// Instância: league.League
-	// Champions: []league.Champion
+	// 88 Nunu
+	// 0 Demolisher Nunu & Willump
+	// 1 Grungy Nunu & Willump
+	// 2 Nunu & Beelump
+	// 3 Nunu & Willump Bot
+	// 4 Papercraft Nunu & Willump
+	// 5 Sasquatch Nunu & Willump
+	// 6 Space Groove Nunu & Willump
+	// 7 TPA Nunu & Willump
+	// 8 Workshop Nunu & Willump
+	// 9 Zombie Nunu & Willump
 }
 
 // Exemplifica o uso de GetChampions.
@@ -42,12 +58,12 @@ func ExampleGetChampions() {
 	}
 
 	for _, champion := range champions {
-		if champion.ID == 4 {
-			fmt.Println(champion.Name)
+		if champion.Name == "Nunu & Willump" {
+			fmt.Println(champion.NameURL)
 		}
 	}
 
-	// Output: Twisted Fate
+	// Output: Nunu
 }
 
 // Exemplifica o uso de League.Export.
@@ -101,8 +117,11 @@ func ExampleLeague_GetChampionsNames() {
 	}
 
 	championsNames := lol.GetChampionsNames()
-	namesLength := len(championsNames)
-	fmt.Println(namesLength)
+	for index, championName := range championsNames {
+		if index == 5 {
+			fmt.Println(index, championName)
+		}
+	}
 
-	// Output: 163
+	// Output: 5 Amumu
 }

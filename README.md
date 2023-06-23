@@ -2,7 +2,7 @@
 
 # `🌱` League Champions <br>
 
-![coverage](https://img.shields.io/badge/coverage-95.5%25-brightgreen)
+![coverage](https://img.shields.io/badge/coverage-96.2%25-brightgreen)
 [![wakatime](https://wakatime.com/badge/github/controlado/league-champions-go.svg)](https://wakatime.com/@programador/projects/pjllknspfy) <br>
 [![report](https://goreportcard.com/badge/github.com/controlado/league-champions-go)](https://goreportcard.com/report/github.com/controlado/league-champions-go)
 [![documentation](https://img.shields.io/badge/documentation-lighgreen)](https://pkg.go.dev/github.com/controlado/league-champions-go)

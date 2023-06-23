@@ -35,13 +35,26 @@ func main() {
 	}
 
 	for index, champion := range lol.Champions {
-		if champion.ID == 4 || champion.ID == 20 {
-			fmt.Println(index, champion.Name)
+		if champion.Name == "Nunu & Willump" {
+			fmt.Println(index, champion.NameURL)
+
+			for index, skin := range champion.Skins {
+				fmt.Println(index, skin.Name)
+			}
 		}
 	}
 }
 ```
 
     Output:
-    int Twisted Fate
-    int Nunu & Willump
+    88 Nunu
+    0 Demolisher Nunu & Willump
+    1 Grungy Nunu & Willump
+    2 Nunu & Beelump
+    3 Nunu & Willump Bot
+    4 Papercraft Nunu & Willump
+    5 Sasquatch Nunu & Willump
+    6 Space Groove Nunu & Willump
+    7 TPA Nunu & Willump
+    8 Workshop Nunu & Willump
+    9 Zombie Nunu & Willump

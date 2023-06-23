@@ -39,17 +39,17 @@ func ExampleNew() {
 	}
 
 	// Output:
-	// 88 Nunu
-	// 0 Demolisher Nunu & Willump
-	// 1 Grungy Nunu & Willump
-	// 2 Nunu & Beelump
+	// 19 Nunu
+	// 0 Sasquatch Nunu & Willump
+	// 1 Workshop Nunu & Willump
+	// 2 Grungy Nunu & Willump
 	// 3 Nunu & Willump Bot
-	// 4 Papercraft Nunu & Willump
-	// 5 Sasquatch Nunu & Willump
-	// 6 Space Groove Nunu & Willump
-	// 7 TPA Nunu & Willump
-	// 8 Workshop Nunu & Willump
-	// 9 Zombie Nunu & Willump
+	// 4 Demolisher Nunu & Willump
+	// 5 TPA Nunu & Willump
+	// 6 Zombie Nunu & Willump
+	// 7 Papercraft Nunu & Willump
+	// 8 Space Groove Nunu & Willump
+	// 9 Nunu & Beelump
 }
 
 // Exemplifica o uso de GetChampions.
@@ -125,5 +125,5 @@ func ExampleLeague_GetChampionsNames() {
 		}
 	}
 
-	// Output: 5 Amumu
+	// Output: 5 Urgot
 }

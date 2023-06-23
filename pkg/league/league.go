@@ -22,20 +22,6 @@ type League struct {
 	Champions []Champion
 }
 
-// Ordena os campeões em ordem alfabética.
-func (lol League) sortChampions() {
-	less := func(i, j int) bool { return lol.Champions[i].Name < lol.Champions[j].Name }
-	sort.SliceStable(lol.Champions, less)
-}
-
-// Ordena os skins em ordem alfabética.
-func (lol League) sortSkins() {
-	for _, champion := range lol.Champions {
-		less := func(i, j int) bool { return champion.Skins[i].Name < champion.Skins[j].Name }
-		sort.SliceStable(champion.Skins, less)
-	}
-}
-
 // Unit é uma estrutura que representa uma skin
 // ou um campeão do League of Legends.
 type Unit struct {
@@ -201,4 +187,20 @@ func (lol League) GetChampionsNames() (result []string) {
 		result = append(result, champion.NameURL)
 	}
 	return result
+}
+
+// Ordena os campeões com base no ID.
+func (lol League) sortChampions() {
+	sort.SliceStable(lol.Champions, func(i, j int) bool {
+		return lol.Champions[i].ID < lol.Champions[j].ID
+	})
+}
+
+// Ordena os skins com base no ID.
+func (lol League) sortSkins() {
+	for _, champion := range lol.Champions {
+		sort.SliceStable(champion.Skins, func(i, j int) bool {
+			return champion.Skins[i].ID < champion.Skins[j].ID
+		})
+	}
 }

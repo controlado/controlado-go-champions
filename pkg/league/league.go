@@ -13,7 +13,9 @@ import (
 	"strings"
 )
 
-const baseURL = "https://raw.communitydragon.org" // Dados crus da Riot.
+const (
+	baseURL = "https://raw.communitydragon.org" // Dados crus da Riot.
+)
 
 // Retorna as unidades (campeões e skins) de forma crua.
 func getUnits(region string) (units map[string]Unit, err error) {

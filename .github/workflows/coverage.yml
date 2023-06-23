@@ -21,7 +21,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ runner.workspace }}/go/pkg/mod
-          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          key: ${{ runner.os }}-go-${{ hashFiles("**/go.sum") }}
 
       - name: Run Go Test
         run: |
@@ -41,7 +41,7 @@ jobs:
           files: README.md
 
       - name: Commit and Push changes
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        if: steps.verify-changed-files.outputs.files_changed == "true"
         uses: endbug/add-and-commit@v7
         with:
           author_name: "GitHub Action"

@@ -28,14 +28,14 @@ type Unit struct {
 //
 // Nem todos os campeões possuem Chromas.
 type Champion struct {
-	ID          int
-	Name        string   // Nome do campeão.
-	NameURL     string   // Nome de URL do campeão.
-	Description string   // Descrição do campeão.
-	Rarity      string   // Por exemplo: kMythic.
-	IsLegacy    bool     // Se é um campeão legado.
-	Chromas     []Chroma // Chromas do campeão.
-	Skins       []Skin   // Skins do campeão.
+	ID          int      `json:"id,omitempty"`
+	Name        string   `json:"name,omitempty"`        // Nome do campeão.
+	NameURL     string   `json:"nameUrl,omitempty"`     // Nome de URL do campeão.
+	Description string   `json:"description,omitempty"` // Descrição do campeão.
+	Rarity      string   `json:"rarity,omitempty"`      // Por exemplo: kMythic.
+	IsLegacy    bool     `json:"isLegacy,omitempty"`    // Se é um campeão legado.
+	Chromas     []Chroma `json:"chromas,omitempty"`     // Chromas do campeão.
+	Skins       []Skin   `json:"skins,omitempty"`       // Skins do campeão.
 }
 
 // Skin é uma estrutura que representa as
@@ -44,19 +44,19 @@ type Champion struct {
 // Todos os campeões possuem uma skin.
 // Nem todas as skins possuem Chromas.
 type Skin struct {
-	ID          int
-	ChampionId  int      // ID do campeão.
-	Name        string   // Nome da skin.
-	Description string   // Descrição da skin.
-	Rarity      string   // Por exemplo: kMythic.
-	IsLegacy    bool     // Se é uma skin legado.
-	Chromas     []Chroma // Chromas da skin, opcional.
+	ID          int      `json:"id,omitempty"`
+	ChampionId  int      `json:"championId,omitempty"`  // ID do campeão.
+	Name        string   `json:"name,omitempty"`        // Nome da skin.
+	Description string   `json:"description,omitempty"` // Descrição da skin.
+	Rarity      string   `json:"rarity,omitempty"`      // Por exemplo: kMythic.
+	IsLegacy    bool     `json:"isLegacy,omitempty"`    // Se é uma skin legado.
+	Chromas     []Chroma `json:"chromas,omitempty"`     // Chromas da skin, opcional.
 }
 
 // Chroma é uma skin personalizada que
 // pode existir em campeões e skins.
 type Chroma struct {
-	ID     int      // ID do Chroma.
-	Name   string   // Nome do Chroma.
-	Colors []string // Cores do Chroma.
+	ID     int      `json:"id,omitempty"`     // ID do Chroma.
+	Name   string   `json:"name,omitempty"`   // Nome do Chroma.
+	Colors []string `json:"colors,omitempty"` // Cores do Chroma.
 }

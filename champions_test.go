@@ -10,12 +10,14 @@ import (
 // Testa as funcionalidades principais
 // que regem a instância de League.
 func TestNew(t *testing.T) {
-	if _, err := New("default"); err != nil {
-		t.Errorf("Not working: %v", err)
+	_, err := New("default")
+	if err != nil {
+		t.Error("expected nil got", err)
 	}
 
-	if _, err := New("invalid"); err == nil {
-		t.Error("Expected: error Got: nil")
+	_, err = New("invalid")
+	if err == nil {
+		t.Error("expected error got nil")
 	}
 }
 

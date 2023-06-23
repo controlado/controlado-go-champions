@@ -54,7 +54,7 @@ func ExampleNew() {
 func ExampleGetChampions() {
 	champions, err := GetChampions("default")
 	if err != nil {
-		log.Panicln("Não foi possível requisitar os campeões")
+		log.Panicln(err)
 	}
 
 	for _, champion := range champions {

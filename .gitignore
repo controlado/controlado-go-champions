@@ -1,9 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/goland+all,visualstudiocode
 # Edit at https://www.toptal.com/developers/gitignore?templates=goland+all,visualstudiocode
 
-/result.json
-/champions.json
-/coverage.out
+**/result.json
+**/champions.json
+**/coverage.out
 
 ### GoLand+all ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider

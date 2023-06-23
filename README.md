@@ -4,9 +4,10 @@
 
 ![coverage](https://img.shields.io/badge/coverage-95.5%25-brightgreen)
 [![wakatime](https://wakatime.com/badge/github/controlado/league-champions-go.svg)](https://wakatime.com/@programador/projects/pjllknspfy) <br>
-[![languages](https://img.shields.io/badge/Documentation-gray)](https://pkg.go.dev/github.com/controlado/league-champions-go)
-[![latest](https://img.shields.io/github/v/tag/controlado/league-champions-go?label=Latest)](https://github.com/controlado/league-champions-go/commits)
-[![go](https://img.shields.io/github/go-mod/go-version/controlado/league-champions-go?color=blue)](https://go.dev/dl/)
+[![report](https://goreportcard.com/badge/github.com/controlado/league-champions-go)](https://goreportcard.com/report/github.com/controlado/league-champions-go)
+[![documentation](https://img.shields.io/badge/documentation-lighgreen)](https://pkg.go.dev/github.com/controlado/league-champions-go)
+[![latest](https://img.shields.io/github/v/tag/controlado/league-champions-go?label=latest)](https://github.com/controlado/league-champions-go/commits)
+[![go](https://img.shields.io/github/go-mod/go-version/controlado/league-champions-go?label=go&color=blue)](https://go.dev/dl/)
 
 This is my first project in Go! <br>
 I hope it can be useful for you :)
